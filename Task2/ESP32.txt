@@ -1,0 +1,62 @@
+
+Atheer Khaled Alotaibi 
+
+Installing the ESP32 Board in Arduino IDE 2.0 (Windows, Mac OS X, and Linux)
+
+The Arduino IDE 2.0 is a (beta version) This means that you may find some bugs and some features may not be fully developed. And in this tutorial, we’ll learn how to install the ESP32 boards in Arduino IDE 2.0 and upload code to the board. This tutorial is compatible with Windows, Mac OS X, and Linux operating systems. And if you encounter a problem check the steps through the following link: 
+https://randomnerdtutorials.com/installing-esp32-arduino-ide-2-0/
+
+If you want to install the ESP32 boards on the “classic” Arduino IDE, follow the next tutorial instead:
+https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/
+
+Prerequisites: 
+First make sure you have Arduino IDE 2.0 installed in your computer.
+Note:
+- Windows: run the file downloaded and follow the instructions in the installation guide.
+- Mac OS X: copy the downloaded file into your application folder.
+- Linux: extract the downloaded file, and open the arduino-ide file that will launch the IDE.
+
+Install 
+To install the ESP32 board in your Arduino IDE, follow these next instructions:
+1. In your Arduino IDE 2.0, go to File > Preferences.
+2. Copy and paste the following line to the Additional Boards Manager URLs field.
+https://dl.espressif.com/dl/package_esp32_index.json
+Note: if you already have the ESP8266 boards URL, you can separate the URLs with a comma, as follows:
+http://arduino.esp8266.com/stable/package_esp8266com_index.json,https://dl.espressif.com/dl/package_esp32_index.json
+3. Open the Boards Manager. You can go to Tools > Board > Boards Manager… or you can simply click the Boards Manager icon at the left-side corner.
+4. Search for ESP32 and press the install button for esp32 by Espressif Systems.
+That’s it. It should be installed after a few seconds.
+
+Testing the Installation
+To test the ESP32 add-on installation, we’ll upload a simple code that blinks the on-board LED (GPIO 2).
+Copy the following code to your Arduino IDE:
+
+#include <Arduino.h>
+#define LED 2
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(115200);
+  pinMode(LED, OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  digitalWrite(LED, HIGH);
+  Serial.println("LED is on");
+  delay(1000);
+  digitalWrite(LED, LOW);
+  Serial.println("LED is off");
+  delay(1000);
+}
+
+Uploading the Sketch
+On the top drop-down menu, select the “unknown” board. A new window, You should select your ESP32 board model and the COM port. And in our example, we’re using the DOIT ESP32 DEVKIT V1 board. Click OK when you’re done., will open.
+Now, you just need to click on the Upload button. And After a few seconds, the upload should be complete.
+
+Note: some ESP32 development boards don’t go into flashing/uploading mode automatically when uploading a new code and you’ll see a lot of dots on the debugging window followed by an error message. If that’s the case, you need to press the ESP32 BOOT button when you start seeing the dots on the debugging window.
+The ESP32 on-board LED should be blinking every second.
+
+Serial Monitor
+You can click on the Serial Monitor icon to open the Serial Monitor tab.
+That’s it! we’ve installed the ESP32 Boards successfully in Arduino IDE 2.0.
